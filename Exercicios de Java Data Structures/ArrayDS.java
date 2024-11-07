@@ -20,13 +20,18 @@ class Result {
      */
 
     public static List<Integer> reverseArray(List<Integer> a) {
-        // Write your code here
-
+    // Write your code here
+        List<Integer> resultado = new ArrayList();
+        
+        for (int i = a.size() - 1; i >= 0; i--) {
+            resultado.add(a.get(i));
+        }
+        return resultado;
     }
 
 }
 
-public class ArrayDS {
+public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
@@ -34,16 +39,16 @@ public class ArrayDS {
         int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
 
         List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                .map(Integer::parseInt)
-                .collect(toList());
+            .map(Integer::parseInt)
+            .collect(toList());
 
         List<Integer> res = Result.reverseArray(arr);
 
         bufferedWriter.write(
-                res.stream()
-                        .map(Object::toString)
-                        .collect(joining(" "))
-                        + "\n"
+            res.stream()
+                .map(Object::toString)
+                .collect(joining(" "))
+            + "\n"
         );
 
         bufferedReader.close();
